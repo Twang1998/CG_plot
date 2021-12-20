@@ -4,7 +4,7 @@ import cv2
 import os 
 import matplotlib.pyplot as plt
 import seaborn as sns
-plt.style.use(['science', 'no-latex'])
+# plt.style.use(['science', 'no-latex'])
 df = pd.read_csv('MOS_test.csv')
 img_list = np.array(df['MOS'])
 
