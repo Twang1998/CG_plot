@@ -5,6 +5,7 @@ import cv2
 import os 
 import matplotlib.pyplot as plt
 from collections import Counter 
+plt.rc('font',family='Times New Roman')
 
 df = pd.read_csv('CG_QA_test.csv')
 img_list = np.array(df['Image'])

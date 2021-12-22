@@ -6,6 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.optimize import curve_fit
+plt.rc('font',family='Times New Roman')
 # plt.style.use('fivethirtyeight')
 # plt.style.use(['science', 'no-latex'])
 # 自定义函数形式
