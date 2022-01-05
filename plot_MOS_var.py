@@ -15,7 +15,7 @@ def func(x, a):
 
 
 
-df = pd.read_csv('MOS_var_test.csv')
+df = pd.read_csv('MOS_var_test_just.csv')
 df = df.sort_values(by="MOS",ascending=True)
 mos_list = np.array(df['MOS'])
 var_list = np.array(df['var'])
@@ -37,6 +37,6 @@ plt.ylim(-0.1,2)
 
 # plt.title('Probability density of MOS')
 plt.legend()
-plt.savefig('MOS_var_dist.png',dpi = 500,bbox_inches = 'tight',transparent = True)
-# plt.show()
+# plt.savefig('MOS_var_dist.png',dpi = 500,bbox_inches = 'tight',transparent = True)
+plt.show()
     
