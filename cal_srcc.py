@@ -16,7 +16,7 @@ def cal_correlation(a,b):
     print('srcc: {:.4f}, plcc: {:.4f}, krcc: {:.4f}'.format(srcc,plcc,krcc))
     return srcc,plcc,krcc
 
-df = pd.read_csv('MOS_var_test_just_norm.csv')
+# df = pd.read_csv('MOS_var_test_just_norm.csv')
 
 # ## 两两之间
 # data = np.array(df.iloc[:,2:-2])
@@ -34,9 +34,32 @@ df = pd.read_csv('MOS_var_test_just_norm.csv')
 # result_df.to_csv('temp.csv',index=False)
 
 
-### 所有人和MOS
-data = np.array(df.iloc[:,2:-1])
-print(data.shape)
+# ### 所有人和MOS
+# data = np.array(df.iloc[:,2:-1])
+# print(data.shape)
 
-for i in range(data.shape[1]-1):
-    srcc,plcc,krcc = cal_correlation(data[:,i],data[:,-1])
+# for i in range(data.shape[1]-1):
+#     srcc,plcc,krcc = cal_correlation(data[:,i],data[:,-1])
+
+
+## ---------------------------------------------------###
+## 看一看异常值剔除前后的srcc对比，以及缩放到[0:100]和直接平均的srcc
+df1 = pd.read_csv('MOS_var_test_filter.csv')
+df2 = pd.read_csv('MOS_var_test_norm_filter.csv')
+df3 = pd.read_csv('MOS_var_test_no_filter.csv')
+df4 = pd.read_csv('MOS_var_test_norm_no_filter.csv')
+
+a = np.array(df1['MOS'])
+b = np.array(df2['MOS'])
+c = np.array(df3['MOS'])
+d = np.array(df4['MOS'])
+
+cal_correlation(a,b)
+cal_correlation(a,c)
+cal_correlation(a,d)
+
+# srcc: 0.9990, plcc: 0.9991, krcc: 0.9753
+# srcc: 0.9937, plcc: 0.9942, krcc: 0.9384
+# srcc: 0.9938, plcc: 0.9942, krcc: 0.9348
+
+## -------------------------------------##
