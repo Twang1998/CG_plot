@@ -43,23 +43,33 @@ def cal_correlation(a,b):
 
 
 ## ---------------------------------------------------###
-## 看一看异常值剔除前后的srcc对比，以及缩放到[0:100]和直接平均的srcc
-df1 = pd.read_csv('MOS_var_test_filter.csv')
-df2 = pd.read_csv('MOS_var_test_norm_filter.csv')
-df3 = pd.read_csv('MOS_var_test_no_filter.csv')
-df4 = pd.read_csv('MOS_var_test_norm_no_filter.csv')
+# ## 看一看异常值剔除前后的srcc对比，以及缩放到[0:100]和直接平均的srcc
+# df1 = pd.read_csv('MOS_var_test_filter.csv')
+# df2 = pd.read_csv('MOS_var_test_norm_filter.csv')
+# df3 = pd.read_csv('MOS_var_test_no_filter.csv')
+# df4 = pd.read_csv('MOS_var_test_norm_no_filter.csv')
 
-a = np.array(df1['MOS'])
-b = np.array(df2['MOS'])
-c = np.array(df3['MOS'])
-d = np.array(df4['MOS'])
+# a = np.array(df1['MOS'])
+# b = np.array(df2['MOS'])
+# c = np.array(df3['MOS'])
+# d = np.array(df4['MOS'])
 
-cal_correlation(a,b)
-cal_correlation(a,c)
-cal_correlation(a,d)
+# cal_correlation(a,b)
+# cal_correlation(a,c)
+# cal_correlation(a,d)
 
-# srcc: 0.9990, plcc: 0.9991, krcc: 0.9753
-# srcc: 0.9937, plcc: 0.9942, krcc: 0.9384
-# srcc: 0.9938, plcc: 0.9942, krcc: 0.9348
+# # srcc: 0.9990, plcc: 0.9991, krcc: 0.9753
+# # srcc: 0.9937, plcc: 0.9942, krcc: 0.9384
+# # srcc: 0.9938, plcc: 0.9942, krcc: 0.9348
 
 ## -------------------------------------##
+
+## 测试UCA性能
+from scipy import io
+data = io.loadmat(r'C:\Users\37151\Desktop\NR_ICME\NR_feature_1200\UCA\feature.mat')
+print(data['result'][:,0])
+
+df2 = pd.read_csv('MOS_var_test_norm_filter.csv')
+b = np.array(df2['MOS'])
+
+cal_correlation(data['result'][:,0],b)
